@@ -1,0 +1,30 @@
+<div ng-controller="EmployeController as employeCtrl">
+
+
+	<div>
+		<H2>voici la page Employes</H2>
+	</div>
+
+	<ul>
+			<table border=>
+				<tr >
+					<td>ID</td>
+					<td>Nom</td>
+					<td>salaire</td>
+				</tr>
+				<tr ng-repeat=" employe in employeCtrl.employes"> 
+					<td>{{employe.id}}</td>
+					<td>{{employe.nom}}</td>
+					<td>{{employe.salaire}}</td>
+				</tr>
+
+
+
+
+			</table>
+			
+
+			</li>
+	</ul>
+</div>
+
