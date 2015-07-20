@@ -10,7 +10,9 @@ angular.module("BankonetClient",["ngRoute"])
 					.when ("/" , {})
 
 					.when ("/employe", {
-						templateUrl: "/Views/listeEmploye.html"
+						templateUrl: "/Views/listeEmploye.html",
+						/*controller: "EmployeController",
+						controllerAs: "emplCTRL"*/
 					})
 					
 					.otherwise({

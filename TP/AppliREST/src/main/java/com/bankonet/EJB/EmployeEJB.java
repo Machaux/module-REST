@@ -25,15 +25,26 @@ public class EmployeEJB {
 		String req1 = "Select e from Employe as e";
 		Query quer1 = this.em.createQuery(req1);
 				
+		
 		List<Employe> result1 = (List<Employe>)quer1.getResultList();	
 		
+		
+		
 		return result1;
-}
-	public Employe getEmployesByID(int id){
+	
+		
+	}
+	
+	
+	public Employe getEmployesByID(int id){ //utiliser plutôt Integer
 		
 		Employe cherchedEmploye = null;
 		List<Employe> listeEmploye = this.getEmployes();
-				
+		
+		//this.em.getReference(Employe.class, id);
+		//this.em.find(Employe.class, id);
+		
+		
 		for (Employe employe : listeEmploye)
 		{
 			if (id==employe.getId())
@@ -44,27 +55,30 @@ public class EmployeEJB {
 		return cherchedEmploye;
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
+//	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void createEmploye(int id, String nom){
 		
 		Employe newEmploye = new Employe(id, nom);
 		em.merge(newEmploye);
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
+//	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void updateEmploye(int id, String nouvNom) throws Exception{
 		
 		Employe updatableEmploye = getEmployesByID(id);
 		if (updatableEmploye!=null)
 		{
 			updatableEmploye.setNom(nouvNom);
-			em.persist(updatableEmploye);
+			em.persist(updatableEmploye); //vérifier avec merge / peut fonctionner sans...
 		}
 		else
 		{
 			throw (new NullPointerException());		
 		}
 	}
+	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteEmploye(int id) throws Exception{
@@ -78,6 +92,6 @@ public class EmployeEJB {
 		{
 			throw (new NullPointerException());		
 		}
-		
 	}
+	
 }

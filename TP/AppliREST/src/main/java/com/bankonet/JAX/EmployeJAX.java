@@ -11,7 +11,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
@@ -74,7 +73,7 @@ public class EmployeJAX {
 
 			ResponseBuilder builder = Response.noContent();
 				
-			if (id==0 || nom.equals(null))
+			if (id==0 || nom.equals(null)) //tester le null avec ==
 			{
 				builder.status(400);
 			}
@@ -99,13 +98,13 @@ public class EmployeJAX {
 				employeEJB.updateEmploye(id, nom);
 				builder.status(200);
 			}
-			catch (Exception exception)
+			catch (Exception exception) // restreindre davantage les exceptions levées
 			{
 				builder.status(400);
 			}
 			finally
 			{
-			return builder.build();
+				return builder.build();
 			}
 		}
 		

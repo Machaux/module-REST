@@ -13,7 +13,7 @@ public class Employe {
 
 	private String nom;
 	
-	private Double salaire;
+	private Double salaire; //big décimal est mieux pour les calculs
 
 	
 	/**
@@ -29,14 +29,16 @@ public class Employe {
 		this.setSalaire(0D);
 	}
 
-	public Integer getId() {
-		return id;
-	}
+	
 
 	
 	/**
 	 * Getters & setters 
 	 */
+	public Integer getId() {
+		return id;
+	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
